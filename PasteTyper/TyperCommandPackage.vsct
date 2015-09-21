@@ -1,0 +1,178 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<CommandTable xmlns="http://schemas.microsoft.com/VisualStudio/2005-10-18/CommandTable" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+
+  <!--  This is the file that defines the actual layout and type of the commands.
+        It is divided in different sections (e.g. command definition, command
+        placement, ...), with each defining a specific set of properties.
+        See the comment before each section for more details about how to
+        use it. -->
+
+  <!--  The VSCT compiler (the tool that translates this file into the binary
+        format that VisualStudio will consume) has the ability to run a preprocessor
+        on the vsct file; this preprocessor is (usually) the C++ preprocessor, so
+        it is possible to define includes and macros with the same syntax used
+        in C++ files. Using this ability of the compiler here, we include some files
+        defining some of the constants that we will use inside the file. -->
+
+  <!--This is the file that defines the IDs for all the commands exposed by VisualStudio. -->
+  <Extern href="stdidcmd.h"/>
+
+  <!--This header contains the command ids for the menus provided by the shell. -->
+  <Extern href="vsshlids.h"/>
+
+  <!--The Commands section is where commands, menus, and menu groups are defined.
+      This section uses a Guid to identify the package that provides the command defined inside it. -->
+  <Commands package="guidTyperCommandPackage">
+    <!-- Inside this section we have different sub-sections: one for the menus, another
+    for the menu groups, one for the buttons (the actual commands), one for the combos
+    and the last one for the bitmaps used. Each element is identified by a command id that
+    is a unique pair of guid and numeric identifier; the guid part of the identifier is usually
+    called "command set" and is used to group different command inside a logically related
+    group; your package should define its own command set in order to avoid collisions
+    with command ids defined by other packages. -->
+
+    <!-- In this section you can define new menu groups. A menu group is a container for
+         other menus or buttons (commands); from a visual point of view you can see the
+         group as the part of a menu contained between two lines. The parent of a group
+         must be a menu. -->
+    <Groups>
+      <Group guid="guidTyperCommandPackageCmdSet" id="MyMenuGroup" priority="0x0600">
+        <Parent guid="guidSHLMainMenu" id="IDM_VS_MENU_TOOLS"/>
+      </Group>
+    </Groups>
+
+    <!--Buttons section. -->
+    <!--This section defines the elements the user can interact with, like a menu command or a button
+        or combo box in a toolbar. -->
+    <Buttons>
+      <!--To define a menu group you have to specify its ID, the parent menu and its display priority.
+          The command is visible and enabled by default. If you need to change the visibility, status, etc, you can use
+          the CommandFlag node.
+          You can add more than one CommandFlag node e.g.:
+              <CommandFlag>DefaultInvisible</CommandFlag>
+              <CommandFlag>DynamicVisibility</CommandFlag>
+          If you do not want an image next to your command, remove the Icon node /> -->
+      <Button guid="guidTyperCommandPackageCmdSet" id="TyperCommandId" priority="0x0100" type="Button">
+        <Parent guid="guidTyperCommandPackageCmdSet" id="MyMenuGroup" />
+        <Icon guid="guidImages" id="bmpPic1" />
+        <Strings>
+          <ButtonText>Paste Typer</ButtonText>
+        </Strings>
+      </Button>
+    </Buttons>
+
+    <!--<CommandPlacements>
+
+      <CommandPlacement guid="guidTyperCommandPackageCmdSet"
+                        id="MyMenuGroup" priority="0x0600">
+        <Parent guid="HtmlEditorWindows" id="IDMX_HTM_SOURCE_BASIC"/>
+      </CommandPlacement>
+      <CommandPlacement guid="guidTyperCommandPackageCmdSet"
+                        id="MyMenuGroup" priority="0x0600">
+        <Parent guid="HtmlEditorWindows" id="IDMX_HTM_SOURCE_HTML"/>
+      </CommandPlacement>
+      <CommandPlacement guid="guidTyperCommandPackageCmdSet"
+                        id="MyMenuGroup" priority="0x0600">
+        <Parent guid="HtmlEditorWindows" id="IDMX_HTM_SOURCE_SCRIPT"/>
+      </CommandPlacement>
+      <CommandPlacement guid="guidTyperCommandPackageCmdSet"
+                        id="MyMenuGroup" priority="0x0600">
+        <Parent guid="HtmlEditorWindows" id="IDMX_HTM_SOURCE_ASPX"/>
+      </CommandPlacement>
+      <CommandPlacement guid="guidTyperCommandPackageCmdSet"
+                        id="MyMenuGroup" priority="0x0600">
+        <Parent guid="HtmlEditorWindows" id="IDMX_HTM_SOURCE_ASAX"/>
+      </CommandPlacement>
+      <CommandPlacement guid="guidTyperCommandPackageCmdSet"
+                        id="MyMenuGroup" priority="0x0600">
+        <Parent guid="HtmlEditorWindows" id="IDMX_HTM_SOURCE_ASPX_CODE"/>
+      </CommandPlacement>
+      <CommandPlacement guid="guidTyperCommandPackageCmdSet"
+                        id="MyMenuGroup" priority="0x0600">
+        <Parent guid="HtmlEditorWindows" id="IDMX_HTM_SOURCE_ASAX_CODE"/>
+      </CommandPlacement>
+      <CommandPlacement guid="guidTyperCommandPackageCmdSet"
+                        id="MyMenuGroup" priority="0x0600">
+        <Parent guid="HtmlEditorWindows" id="IDMX_HTM_SOURCE_ASPX_CODE_VB"/>
+      </CommandPlacement>
+      <CommandPlacement guid="guidTyperCommandPackageCmdSet"
+                        id="MyMenuGroup" priority="0x0600">
+        <Parent guid="HtmlEditorWindows" id="IDMX_HTM_SOURCE_ASAX_CODE_VB"/>
+      </CommandPlacement>
+      <CommandPlacement guid="guidTyperCommandPackageCmdSet"
+                        id="MyMenuGroup" priority="0x0600">
+        <Parent guid="HtmlEditorWindows" id="IDMX_HTM_SOURCE_ASMX_CODE"/>
+      </CommandPlacement>
+      <CommandPlacement guid="guidTyperCommandPackageCmdSet"
+                        id="MyMenuGroup" priority="0x0600">
+        <Parent guid="HtmlEditorWindows" id="IDMX_HTM_SOURCE_ASMX_CODE_VB"/>
+      </CommandPlacement>
+      <CommandPlacement guid="guidTyperCommandPackageCmdSet"
+                        id="MyMenuGroup" priority="0x0600">
+        <Parent guid="CssEditorWindows" id="IDMX_HTM_SOURCE_CSS"/>
+      </CommandPlacement>
+      <CommandPlacement guid="guidTyperCommandPackageCmdSet"
+                        id="MyMenuGroup" priority="0x0600">
+        <Parent guid="XamlEditorWindows" id="IDMX_XAML_SOURCE_BASIC"/>
+      </CommandPlacement>
+    </CommandPlacements>-->
+
+    <!--The bitmaps section is used to define the bitmaps that are used for the commands.-->
+    <Bitmaps>
+      <!--  The bitmap id is defined in a way that is a little bit different from the others:
+            the declaration starts with a guid for the bitmap strip, then there is the resource id of the
+            bitmap strip containing the bitmaps and then there are the numeric ids of the elements used
+            inside a button definition. An important aspect of this declaration is that the element id
+            must be the actual index (1-based) of the bitmap inside the bitmap strip. -->
+      <Bitmap guid="guidImages" href="Resources\TyperCommand.png" usedList="bmpPic1, bmpPic2, bmpPicSearch, bmpPicX, bmpPicArrows, bmpPicStrikethrough"/>
+    </Bitmaps>
+  </Commands>
+
+  <KeyBindings>
+    <KeyBinding guid="guidTyperCommandPackageCmdSet" id="TyperCommandId"
+        key1="K" mod1="CONTROL" key2="VK_SPACE" mod2="Control" editor="guidVSStd97" />
+  </KeyBindings>
+
+  <Symbols>
+    <!-- This is the package guid. -->
+    <GuidSymbol name="guidTyperCommandPackage" value="{60b8addc-b5ee-4c61-a6f7-c8250e74c5f2}" />
+
+    <!-- This is the guid used to group the menu commands together -->
+    <GuidSymbol name="guidTyperCommandPackageCmdSet" value="{39b916a5-c6c3-4e45-9aab-32462b7957e7}">
+      <IDSymbol name="MyMenuGroup" value="0x1020" />
+      <IDSymbol name="TyperCommandId" value="0x0100" />
+    </GuidSymbol>
+
+    <GuidSymbol name="guidImages" value="{5b11b5ae-6a7a-4759-a0e4-b04f7d827c6a}" >
+      <IDSymbol name="bmpPic1" value="1" />
+      <IDSymbol name="bmpPic2" value="2" />
+      <IDSymbol name="bmpPicSearch" value="3" />
+      <IDSymbol name="bmpPicX" value="4" />
+      <IDSymbol name="bmpPicArrows" value="5" />
+      <IDSymbol name="bmpPicStrikethrough" value="6" />
+    </GuidSymbol>
+
+    <!-- These are the IDs for the various HTML style editors that VS uses.  -->
+    <GuidSymbol name="HtmlEditorWindows" value="{d7e8c5e1-bdb8-11d0-9c88-0000f8040a53}">
+      <IDSymbol name="IDMX_HTM_SOURCE_BASIC" value="0x32" />
+      <IDSymbol name="IDMX_HTM_SOURCE_HTML" value="0x33" />
+      <IDSymbol name="IDMX_HTM_SOURCE_SCRIPT" value="0x34" />
+      <IDSymbol name="IDMX_HTM_SOURCE_ASPX" value="0x35" />
+      <IDSymbol name="IDMX_HTM_SOURCE_ASAX" value="0x3B" />
+      <IDSymbol name="IDMX_HTM_SOURCE_ASPX_CODE" value="0x36" />
+      <IDSymbol name="IDMX_HTM_SOURCE_ASAX_CODE" value="0x3C" />
+      <IDSymbol name="IDMX_HTM_SOURCE_ASPX_CODE_VB" value="0x37" />
+      <IDSymbol name="IDMX_HTM_SOURCE_ASAX_CODE_VB" value="0x3D" />
+      <IDSymbol name="IDMX_HTM_SOURCE_ASMX_CODE" value="0x38" />
+      <IDSymbol name="IDMX_HTM_SOURCE_ASMX_CODE_VB" value="0x39" />
+    </GuidSymbol>
+
+    <GuidSymbol name="CssEditorWindows" value="{A764E896-518D-11D2-9A89-00C04F79EFC3}">
+      <IDSymbol name="IDMX_HTM_SOURCE_CSS" value="0x0102"/>
+    </GuidSymbol>
+
+    <GuidSymbol name="XamlEditorWindows" value="{4C87B692-1202-46AA-B64C-EF01FAEC53DA}">
+      <IDSymbol name="IDMX_XAML_SOURCE_BASIC" value="0x0103"/>
+    </GuidSymbol>
+  </Symbols>
+</CommandTable>
